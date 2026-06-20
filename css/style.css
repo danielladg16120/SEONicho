@@ -11,10 +11,10 @@ body{
 }
 
 .hero{
-  min-height:75vh;
+  min-height:60vh;
   background:linear-gradient(135deg,#111,#242424);
   color:white;
-  padding:32px 8%;
+  padding:28px 7%;
   display:flex;
   flex-direction:column;
 }
@@ -45,23 +45,29 @@ body{
 }
 
 .hero-content{
-  max-width:760px;
-  margin-top:110px;
+  margin-top:65px;
+  max-width:720px;
 }
 
 .hero-content h1{
-  font-size:64px;
-  line-height:1.05;
   margin-bottom:24px;
   letter-spacing:-2px;
+  font-size:52px;
+  line-height:1.05;
+  max-width:720px;
+}
 }
 
 .hero-content p{
-  font-size:20px;
   line-height:1.6;
-  max-width:680px;
   margin-bottom:32px;
   color:#e4e4e4;
+  font-size:18px;
+  max-width:620px;
+}
+
+.btn-main{
+  display:inline-block;
 }
 .features{
   display:grid;

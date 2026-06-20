@@ -182,3 +182,15 @@ body{
   position:relative;
   z-index:1;
 }
+
+.copy-btn{
+  display:none;
+  margin-top:20px;
+  background:#f5b041;
+  color:#111;
+  padding:16px 28px;
+  border-radius:30px;
+  border:none;
+  font-weight:bold;
+  cursor:pointer;
+}

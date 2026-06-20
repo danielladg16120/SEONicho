@@ -206,3 +206,15 @@ El nicho "${nicho}" puede merecer la pena si se trabaja con una estrategia clara
 Mi recomendación sería empezar con 30 a 50 artículos, medir tráfico durante 3 a 6 meses y después mejorar los artículos que empiecen a recibir impresiones.
 `;
 }
+
+function copiarInforme() {
+  const resultado = document.getElementById("resultado").innerText;
+
+  if (!resultado.trim()) {
+    alert("Primero genera un informe.");
+    return;
+  }
+
+  navigator.clipboard.writeText(resultado);
+  alert("Informe copiado correctamente.");
+}

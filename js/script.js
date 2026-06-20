@@ -4,143 +4,205 @@ function generarInforme() {
   const resultado = document.getElementById("resultado");
 
   if (!nicho || !visitas) {
-    resultado.innerHTML = "Por favor, escribe un nicho y una cantidad de visitas mensuales.";
+    resultado.innerHTML = "⚠️ Escribe un nicho y las visitas mensuales estimadas.";
     return;
   }
 
-  const rpmConservador = 4;
-  const rpmMedio = 8;
-  const rpmOptimista = 15;
+  const texto = nicho.toLowerCase();
 
-  const ingresoConservador = (visitas / 1000) * rpmConservador;
-  const ingresoMedio = (visitas / 1000) * rpmMedio;
-  const ingresoOptimista = (visitas / 1000) * rpmOptimista;
+  let tipo = "informacional";
+  let competencia = "media";
+  let rpm = 7;
+  let monetizacion = "AdSense, afiliación y productos digitales";
+  let estrategia = "crear guías completas, artículos long tail y comparativas";
+
+  if (
+    texto.includes("salud") ||
+    texto.includes("medicina") ||
+    texto.includes("ansiedad") ||
+    texto.includes("dietas") ||
+    texto.includes("suplementos")
+  ) {
+    tipo = "YMYL / salud";
+    competencia = "alta";
+    rpm = 5;
+    monetizacion = "AdSense con cuidado, ebooks, cursos y captación de leads";
+    estrategia = "crear contenido muy fiable, con autores expertos y fuentes claras";
+  } else if (
+    texto.includes("finanzas") ||
+    texto.includes("inversión") ||
+    texto.includes("dinero") ||
+    texto.includes("hipotecas") ||
+    texto.includes("seguros")
+  ) {
+    tipo = "financiero";
+    competencia = "muy alta";
+    rpm = 18;
+    monetizacion = "afiliación financiera, leads, AdSense premium y comparadores";
+    estrategia = "atacar keywords long tail y comparativas muy específicas";
+  } else if (
+    texto.includes("viajes") ||
+    texto.includes("hoteles") ||
+    texto.includes("vuelos") ||
+    texto.includes("turismo")
+  ) {
+    tipo = "viajes";
+    competencia = "alta";
+    rpm = 8;
+    monetizacion = "Booking, GetYourGuide, seguros de viaje, AdSense y afiliación";
+    estrategia = "crear guías por destino, itinerarios y rankings";
+  } else if (
+    texto.includes("cafetera") ||
+    texto.includes("aspiradora") ||
+    texto.includes("móvil") ||
+    texto.includes("portátil") ||
+    texto.includes("producto")
+  ) {
+    tipo = "afiliación / reviews";
+    competencia = "alta";
+    rpm = 12;
+    monetizacion = "Amazon Afiliados, comparativas, reviews y AdSense";
+    estrategia = "crear comparativas tipo mejores, opiniones y guías de compra";
+  } else if (
+    texto.includes("oposiciones") ||
+    texto.includes("estudiar") ||
+    texto.includes("examen") ||
+    texto.includes("curso")
+  ) {
+    tipo = "educación";
+    competencia = "media-alta";
+    rpm = 9;
+    monetizacion = "ebooks, cursos, plantillas, afiliación educativa y AdSense";
+    estrategia = "crear temarios, tests, guías y recursos descargables";
+  }
+
+  const ingresos = (visitas / 1000) * rpm;
+  const ingresosAfiliacion = ingresos * 1.4;
+  const ingresosOptimista = ingresos * 2.3;
 
   resultado.innerHTML = `
-INFORME SEO DEL NICHO: ${nicho.toUpperCase()}
+📊 INFORME SEO DEL NICHO: ${nicho.toUpperCase()}
 
-1. Tamaño del mercado y tendencia
+1. Diagnóstico rápido
 
-El nicho "${nicho}" puede analizarse como una oportunidad web basada en búsquedas informativas, comparativas y transaccionales. Para validar el mercado habría que revisar volumen de búsquedas, tendencia en Google Trends, competencia en Google y posibilidad de monetización.
+Tipo de nicho detectado: ${tipo}
+Nivel de competencia estimado: ${competencia}
+RPM estimado: ${rpm} € por cada 1.000 visitas
+Monetización recomendada: ${monetizacion}
 
-2. Nivel de competencia SEO
+2. Tamaño del mercado y tendencia
 
-La competencia dependerá de si existen grandes medios, blogs especializados, tiendas online o webs de afiliación posicionadas. Si los primeros resultados son dominios fuertes, será necesario atacar keywords long tail.
+El nicho "${nicho}" puede funcionar si existe una demanda constante de búsquedas en Google. Para validarlo habría que comprobar si las personas buscan información, comparativas, opiniones, precios o soluciones relacionadas con este tema.
 
-3. Keywords recomendadas
+Este tipo de nicho se puede trabajar creando contenido evergreen, es decir, artículos que sigan recibiendo visitas durante meses o años.
 
-Keywords principales:
+3. Keywords principales
+
 - ${nicho}
 - mejores ${nicho}
 - guía de ${nicho}
-- comprar ${nicho}
-- comparativa ${nicho}
-
-Long tail:
-- mejores ${nicho} calidad precio
-- ${nicho} para principiantes
-- qué ${nicho} elegir
 - ${nicho} opiniones
-- ${nicho} barato
+- ${nicho} precio
+- ${nicho} para principiantes
 
-Keywords de baja competencia:
+4. Keywords long tail
+
+- mejores ${nicho} calidad precio
+- cómo elegir ${nicho}
+- qué ${nicho} comprar
 - errores al elegir ${nicho}
+- ${nicho} barato y bueno
 - alternativas a ${nicho}
-- ${nicho} para uso diario
-- guía completa sobre ${nicho}
+
+5. Keywords de baja competencia
+
 - dudas frecuentes sobre ${nicho}
+- ${nicho} para empezar desde cero
+- ventajas y desventajas de ${nicho}
+- guía completa de ${nicho}
+- preguntas frecuentes sobre ${nicho}
 
-4. Estrategia SEO recomendada
+6. Estrategia SEO recomendada
 
-Arquitectura web:
-- Inicio
-- Guías
-- Comparativas
-- Opiniones
-- Preguntas frecuentes
-- Blog
+Para este nicho recomiendo ${estrategia}.
 
-Plan de contenidos:
-Publicar entre 30 y 50 artículos iniciales. Primero atacar keywords long tail y luego crear páginas más fuertes para keywords principales.
+Arquitectura web recomendada:
 
-5. Monetización
+Inicio
+Guías
+Comparativas
+Opiniones
+Preguntas frecuentes
+Blog
+Contacto
 
-Google AdSense:
-- Anuncio debajo del título
-- Anuncio después del segundo párrafo
-- Anuncio en mitad del artículo
-- Anuncio antes de preguntas frecuentes
-- Anuncio al final del contenido
+7. Plan de contenidos inicial
 
-Otros métodos:
-- Afiliación
-- Productos digitales
-- Newsletter
-- Venta de leads
-- Patrocinios
+Primer mes:
+- 10 artículos long tail
+- 5 guías básicas
+- 5 artículos de preguntas frecuentes
 
-6. Estimación de ingresos
+Segundo mes:
+- 10 comparativas
+- 5 artículos de intención comercial
+- 5 artículos informacionales
+
+Tercer mes:
+- Mejorar artículos antiguos
+- Crear enlaces internos
+- Añadir tablas, FAQs y llamadas a la acción
+
+8. Monetización
+
+La monetización principal sería:
+
+${monetizacion}
+
+Posiciones recomendadas para anuncios:
+
+- Debajo del título del artículo
+- Después del segundo párrafo
+- En mitad del contenido
+- Antes de preguntas frecuentes
+- Al final del artículo
+
+9. Estimación de ingresos
 
 Con ${visitas.toLocaleString()} visitas mensuales:
 
-Escenario conservador:
-${ingresoConservador.toFixed(2)} € / mes
+Solo AdSense:
+${ingresos.toFixed(2)} € / mes
 
-Escenario medio:
-${ingresoMedio.toFixed(2)} € / mes
+AdSense + afiliación:
+${ingresosAfiliacion.toFixed(2)} € / mes
 
 Escenario optimista:
-${ingresoOptimista.toFixed(2)} € / mes
+${ingresosOptimista.toFixed(2)} € / mes
 
-7. Costes aproximados
+10. Costes aproximados
 
-Artículo barato: 15 € - 30 €
-Artículo medio: 40 € - 80 €
-Artículo profesional: 100 € - 200 €
+50 artículos básicos:
+750 € - 1.500 €
 
-Para lanzar una web con 50 artículos:
-- Presupuesto bajo: 750 € - 1.500 €
-- Presupuesto medio: 2.000 € - 4.000 €
-- Presupuesto alto: 5.000 € - 10.000 €
+50 artículos buenos:
+2.000 € - 4.000 €
 
-8. Proyección financiera
+50 artículos profesionales:
+5.000 € - 10.000 €
 
-Conservador:
-Tráfico lento, pocos ingresos al principio. Puede tardar 8-12 meses.
+11. Riesgos principales
 
-Medio:
-Crecimiento estable con buena estrategia de contenidos. Puede generar ingresos en 4-8 meses.
-
-Optimista:
-Buen nicho, baja competencia y monetización fuerte. Puede empezar a generar ingresos en 3-6 meses.
-
-9. Escalabilidad
-
-El nicho puede escalar creando más categorías, comparativas, herramientas gratuitas, newsletter y productos digitales.
-
-10. Ejemplo de web real
-
-Nombre sugerido:
-guia${nicho.replaceAll(" ", "")}.com
-
-Estructura:
-- Inicio
-- Mejores ${nicho}
-- Guías
-- Comparativas
-- Opiniones
-- Blog
-- Contacto
-
-Riesgos:
-- Alta competencia
-- Baja rentabilidad por visita
+- Competencia alta
+- Tardar meses en posicionar
+- Contenido demasiado genérico
 - Dependencia de Google
-- Contenido genérico
-- Falta de autoridad
+- Baja autoridad al empezar
 
-Recomendación final:
+12. Recomendación final
 
-El nicho "${nicho}" puede merecer la pena si tiene búsquedas suficientes, posibilidad de afiliación y competencia asumible. La estrategia correcta sería empezar con contenido long tail, crear autoridad temática y monetizar primero con afiliación y después con AdSense.
-  `;
+El nicho "${nicho}" puede merecer la pena si se trabaja con una estrategia clara. No conviene empezar atacando palabras muy competidas. Lo ideal es empezar con keywords long tail, publicar mucho contenido útil y crear una estructura web ordenada.
+
+Mi recomendación sería empezar con 30 a 50 artículos, medir tráfico durante 3 a 6 meses y después mejorar los artículos que empiecen a recibir impresiones.
+`;
 }

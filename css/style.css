@@ -138,3 +138,47 @@ body{
   line-height:1.8;
   white-space:pre-line;
 }
+
+.resultado{
+  max-width:1100px;
+  margin-top:45px;
+  background:white;
+  padding:40px;
+  border-radius:28px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.10);
+  line-height:1.8;
+  white-space:pre-line;
+  font-size:17px;
+  border:1px solid #eee;
+}
+
+.resultado::first-line{
+  font-size:28px;
+  font-weight:bold;
+  color:#111;
+}
+
+.tool{
+  position:relative;
+}
+
+.tool::before{
+  content:"";
+  position:absolute;
+  top:40px;
+  right:8%;
+  width:180px;
+  height:180px;
+  background:#f5b041;
+  border-radius:50%;
+  opacity:0.15;
+  z-index:0;
+}
+
+.tool h2,
+.tool p,
+.form-box,
+.resultado{
+  position:relative;
+  z-index:1;
+}
